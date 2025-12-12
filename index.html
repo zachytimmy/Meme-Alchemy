@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meme Alchemy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&family=Creepster&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Space Mono', monospace;
+        background-color: #050505;
+        color: #e0e0e0;
+      }
+      .font-display {
+        font-family: 'Syne', sans-serif;
+      }
+      .neon-text {
+        text-shadow: 0 0 10px rgba(251, 191, 36, 0.7), 0 0 20px rgba(251, 191, 36, 0.5);
+      }
+      .glitch-hover:hover {
+        animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+        color: #fbbf24; /* Amber-400 */
+      }
+      @keyframes glitch {
+        0% { transform: translate(0) }
+        20% { transform: translate(-2px, 2px) }
+        40% { transform: translate(-2px, -2px) }
+        60% { transform: translate(2px, 2px) }
+        80% { transform: translate(2px, -2px) }
+        100% { transform: translate(0) }
+      }
+
+      /* AI-CHEMY Glitch Effect */
+      .glitch-ai-container {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .glitch-ai-container::after {
+        content: "AICHEMY";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        color: #22d3ee; /* Cyan-400 */
+        background: #050505; /* Masks the gold text below */
+        opacity: 0;
+        z-index: 10;
+        text-shadow: 2px 2px 0px #ff00ff; /* Magenta shadow */
+        animation: glitch-ai-anim 4s infinite;
+        pointer-events: none;
+      }
+
+      @keyframes glitch-ai-anim {
+        0%, 90% { 
+          opacity: 0; 
+          transform: translate(0);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+        91% {
+          opacity: 1;
+          transform: translate(-2px, 1px);
+          clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+        }
+        92% {
+          opacity: 1;
+          transform: translate(2px, -1px);
+          clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+          color: #e879f9; /* Fuchsia-400 */
+        }
+        93% {
+          opacity: 1;
+          transform: translate(0, 0);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          color: #22d3ee;
+        }
+        94% {
+          opacity: 0;
+        }
+        96% {
+          opacity: 1;
+          transform: translate(-1px, -1px);
+          color: #ffffff;
+        }
+        97% {
+          opacity: 0;
+        }
+      }
+
+      /* KAPRE MODE STYLES */
+      .kapre-bg {
+        background-color: #1a0505;
+      }
+      
+      .scanlines {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, .5) 50%);
+        background-size: 100% 4px;
+        z-index: 50;
+        pointer-events: none;
+        opacity: 0.2;
+        animation: scroll 120s linear infinite;
+      }
+      
+      @keyframes scroll {
+        0% { background-position: 0 0; }
+        100% { background-position: 0 100%; }
+      }
+
+      .smoke-container {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 5;
+        opacity: 0.6;
+        overflow: hidden;
+      }
+
+      .smoke-puff {
+        position: absolute;
+        bottom: -100px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(200,200,200,0.2) 0%, rgba(100,0,0,0) 70%);
+        border-radius: 50%;
+        filter: blur(40px);
+        animation: smoke-rise 10s infinite;
+      }
+
+      @keyframes smoke-rise {
+        0% { transform: translateY(0) scale(1) translateX(0); opacity: 0; }
+        20% { opacity: 0.5; }
+        100% { transform: translateY(-800px) scale(3) translateX(100px); opacity: 0; }
+      }
+
+      /* KAPRE Glitch Effect */
+      .glitch-kapre-container {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .glitch-kapre-container::after {
+        content: "KAPRE ALCHEMY";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        color: #ef4444; /* Red-500 */
+        background: #1a0505; 
+        opacity: 0;
+        z-index: 20;
+        text-shadow: 3px 0px 0px #000;
+        animation: glitch-kapre-anim 3s infinite;
+        pointer-events: none;
+        font-family: 'Creepster', cursive;
+        letter-spacing: 0.05em;
+      }
+
+      @keyframes glitch-kapre-anim {
+        0%, 85% { opacity: 0; transform: translate(0); }
+        86% { opacity: 1; transform: translate(-4px, 2px); clip-path: inset(10% 0 80% 0); }
+        87% { opacity: 1; transform: translate(4px, -2px); clip-path: inset(40% 0 10% 0); }
+        88% { opacity: 1; transform: translate(0, 0); clip-path: inset(0 0 0 0); }
+        90% { opacity: 0; }
+        95% { opacity: 1; transform: skewX(20deg); color: #7f1d1d; }
+        96% { opacity: 0; }
+      }
+
+      .kapre-silhouette {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 40vw;
+        height: 60vh;
+        background: radial-gradient(ellipse at bottom right, rgba(0,0,0,0.9), transparent 70%);
+        z-index: 4;
+        pointer-events: none;
+      }
+      
+      /* Simple shape to suggest a seated giant */
+      .kapre-shape {
+        position: absolute;
+        bottom: -50px;
+        right: -50px;
+        width: 500px;
+        height: 600px;
+        background: #050101;
+        border-radius: 40% 40% 0 0;
+        filter: blur(20px);
+        opacity: 0.8;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
